@@ -1,0 +1,8 @@
+label,precision,recall,f1,support
+current_deviation,0.7244,0.528,0.6108,214
+normal,0.8913,0.7923,0.8389,207
+open_circuit,0.8295,1.0,0.9068,214
+partial_shading,0.6,0.9956,0.7488,226
+sensor_failure,1.0,0.5022,0.6686,225
+temperature_anomaly,1.0,1.0,1.0,264
+accuracy,,,0.8096,1350

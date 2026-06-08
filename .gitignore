@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.streamlit/
+
+firmware/esp32_edge_sentinel/config.h
+data/*.db
+data/*.db-shm
+data/*.db-wal
+data/processed/*.csv
+data/raw/*.csv
+
+.DS_Store

@@ -1,0 +1,8 @@
+{
+  "0": "normal",
+  "1": "open_circuit",
+  "2": "partial_shading",
+  "3": "temperature_anomaly",
+  "4": "current_deviation",
+  "5": "sensor_failure"
+}

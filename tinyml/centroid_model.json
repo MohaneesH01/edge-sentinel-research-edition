@@ -1,0 +1,46 @@
+{
+  "features": [
+    "voltage",
+    "current",
+    "temperature",
+    "power"
+  ],
+  "centroids": {
+    "current_deviation": {
+      "voltage": 11.80082361516035,
+      "current": 0.9146705539358599,
+      "temperature": 33.057609329446066,
+      "power": 10.788253644314869
+    },
+    "normal": {
+      "voltage": 12.004753246753246,
+      "current": 0.8477907647907648,
+      "temperature": 30.984256854256856,
+      "power": 10.17794227994228
+    },
+    "open_circuit": {
+      "voltage": 12.40310058309038,
+      "current": 0.01999125364431487,
+      "temperature": 31.021807580174926,
+      "power": 0.24784985422740521
+    },
+    "partial_shading": {
+      "voltage": 10.414083086053413,
+      "current": 0.2800964391691395,
+      "temperature": 31.99992581602374,
+      "power": 2.916845697329377
+    },
+    "sensor_failure": {
+      "voltage": 3.815051851851852,
+      "current": -0.040740740740740744,
+      "temperature": -35.46346666666667,
+      "power": -0.2734281481481482
+    },
+    "temperature_anomaly": {
+      "voltage": 11.697902515723271,
+      "current": 0.7572169811320755,
+      "temperature": 47.86427672955975,
+      "power": 8.858830188679246
+    }
+  }
+}

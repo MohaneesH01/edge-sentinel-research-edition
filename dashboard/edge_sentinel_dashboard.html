@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Edge Sentinel Dashboard</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172026;
+      --muted: #5e6b74;
+      --line: #d9e0e5;
+      --panel: #ffffff;
+      --bg: #f4f7f6;
+      --accent: #0b7667;
+      --warn: #b84a2a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    header {
+      padding: 28px 32px 18px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    h1 { margin: 0; font-size: 28px; letter-spacing: 0; }
+    .subtitle { margin-top: 6px; color: var(--muted); }
+    main { padding: 24px 32px 40px; max-width: 1280px; margin: 0 auto; }
+    .metrics { display: grid; grid-template-columns: repeat(4, minmax(140px, 1fr)); gap: 12px; }
+    .metric, .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .metric { padding: 16px; }
+    .metric span { display: block; color: var(--muted); font-size: 13px; }
+    .metric strong { display: block; margin-top: 8px; font-size: 24px; }
+    .grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 16px; margin-top: 16px; }
+    .panel { padding: 18px; overflow: hidden; }
+    h2 { margin: 0 0 14px; font-size: 18px; }
+    svg { width: 100%; height: 170px; }
+    polyline { fill: none; stroke-width: 3; vector-effect: non-scaling-stroke; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { padding: 10px 8px; border-bottom: 1px solid var(--line); text-align: left; }
+    th { color: var(--muted); font-weight: 600; }
+    .alert { color: var(--warn); font-weight: 700; }
+    @media (max-width: 820px) {
+      header, main { padding-left: 18px; padding-right: 18px; }
+      .metrics, .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Edge Sentinel Research Edition</h1>
+    <div class="subtitle">Local renewable-infrastructure monitoring and fault-detection dashboard</div>
+  </header>
+  <main>
+    <section class="metrics">
+      <section class="metric"><span>Voltage</span><strong>-1.00 V</strong></section>
+      <section class="metric"><span>Current</span><strong>0.00 A</strong></section>
+      <section class="metric"><span>Temperature</span><strong>-99.0 C</strong></section>
+      <section class="metric"><span>Power</span><strong>-0.00 W</strong></section>
+    </section>
+    <section class="grid">
+      <div class="panel">
+        <h2>Recent Power Trend</h2>
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none"><polyline points="0.00,46.79 1.27,99.26 2.53,46.79 3.80,50.50 5.06,46.79 6.33,46.79 7.59,46.79 8.86,3.48 10.13,46.79 11.39,3.81 12.66,46.79 13.92,3.63 15.19,46.79 16.46,98.94 17.72,46.79 18.99,99.17 20.25,46.79 21.52,46.79 22.78,42.43 24.05,46.79 25.32,42.43 26.58,42.43 27.85,42.43 29.11,46.79 30.38,46.79 31.65,0.00 32.91,46.79 34.18,98.96 35.44,99.05 36.71,46.79 37.97,46.79 39.24,98.97 40.51,46.79 41.77,46.79 43.04,46.79 44.30,46.79 45.57,99.16 46.84,46.79 48.10,3.57 49.37,99.31 50.63,2.19 51.90,50.53 53.16,98.99 54.43,46.79 55.70,46.79 56.96,42.43 58.23,42.43 59.49,5.04 60.76,4.54 62.03,46.79 63.29,46.79 64.56,46.79 65.82,46.79 67.09,50.28 68.35,46.79 69.62,100.00 70.89,46.79 72.15,50.56 73.42,46.79 74.68,99.71 75.95,99.13 77.22,3.57 78.48,50.40 79.75,1.82 81.01,42.43 82.28,46.79 83.54,99.73 84.81,46.79 86.08,46.79 87.34,2.91 88.61,46.79 89.87,46.79 91.14,46.79 92.41,46.79 93.67,46.79 94.94,46.79 96.20,2.79 97.47,50.44 98.73,50.56 100.00,46.79" stroke="#0b7667" /></svg>
+      </div>
+      <div class="panel">
+        <h2>Current Fault State</h2>
+        <p class="alert">sensor_failure</p>
+        <p>Records analyzed: 5400</p>
+      </div>
+    </section>
+    <section class="grid">
+      <div class="panel">
+        <h2>Fault Distribution</h2>
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Fault</th>
+      <th>Records</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>normal</td>
+      <td>900</td>
+    </tr>
+    <tr>
+      <td>open_circuit</td>
+      <td>900</td>
+    </tr>
+    <tr>
+      <td>partial_shading</td>
+      <td>900</td>
+    </tr>
+    <tr>
+      <td>temperature_anomaly</td>
+      <td>900</td>
+    </tr>
+    <tr>
+      <td>current_deviation</td>
+      <td>900</td>
+    </tr>
+    <tr>
+      <td>sensor_failure</td>
+      <td>900</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+      <div class="panel">
+        <h2>Recent Readings</h2>
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>timestamp</th>
+      <th>voltage</th>
+      <th>current</th>
+      <th>temperature</th>
+      <th>power</th>
+      <th>fault_label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2026-01-01T13:29:57+00:00</td>
+      <td>-1.000</td>
+      <td>0.000</td>
+      <td>-99.00</td>
+      <td>-0.000</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:54+00:00</td>
+      <td>-1.000</td>
+      <td>0.864</td>
+      <td>-99.00</td>
+      <td>-0.864</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:51+00:00</td>
+      <td>-1.000</td>
+      <td>0.837</td>
+      <td>31.21</td>
+      <td>-0.837</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:48+00:00</td>
+      <td>12.050</td>
+      <td>0.837</td>
+      <td>-99.00</td>
+      <td>10.086</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:45+00:00</td>
+      <td>0.000</td>
+      <td>-1.000</td>
+      <td>-99.00</td>
+      <td>-0.000</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:42+00:00</td>
+      <td>12.088</td>
+      <td>0.000</td>
+      <td>-99.00</td>
+      <td>0.000</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:39+00:00</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>-99.00</td>
+      <td>0.000</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:36+00:00</td>
+      <td>-1.000</td>
+      <td>0.000</td>
+      <td>30.15</td>
+      <td>-0.000</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:33+00:00</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>30.94</td>
+      <td>0.000</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:30+00:00</td>
+      <td>0.000</td>
+      <td>-1.000</td>
+      <td>-99.00</td>
+      <td>-0.000</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:27+00:00</td>
+      <td>12.148</td>
+      <td>0.828</td>
+      <td>30.42</td>
+      <td>10.059</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:24+00:00</td>
+      <td>-1.000</td>
+      <td>0.000</td>
+      <td>30.52</td>
+      <td>-0.000</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:21+00:00</td>
+      <td>-1.000</td>
+      <td>0.000</td>
+      <td>-99.00</td>
+      <td>-0.000</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:18+00:00</td>
+      <td>12.135</td>
+      <td>-1.000</td>
+      <td>30.74</td>
+      <td>-12.135</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:15+00:00</td>
+      <td>0.000</td>
+      <td>0.819</td>
+      <td>31.02</td>
+      <td>0.000</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:12+00:00</td>
+      <td>-1.000</td>
+      <td>-1.000</td>
+      <td>30.14</td>
+      <td>1.000</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:09+00:00</td>
+      <td>12.014</td>
+      <td>0.858</td>
+      <td>31.20</td>
+      <td>10.308</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:06+00:00</td>
+      <td>-1.000</td>
+      <td>0.827</td>
+      <td>31.12</td>
+      <td>-0.827</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:03+00:00</td>
+      <td>12.097</td>
+      <td>0.819</td>
+      <td>-99.00</td>
+      <td>9.907</td>
+      <td>sensor_failure</td>
+    </tr>
+    <tr>
+      <td>2026-01-01T13:29:00+00:00</td>
+      <td>11.998</td>
+      <td>-1.000</td>
+      <td>-99.00</td>
+      <td>-11.998</td>
+      <td>sensor_failure</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

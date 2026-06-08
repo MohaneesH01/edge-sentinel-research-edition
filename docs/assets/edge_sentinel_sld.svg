@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <style>
+      .bg { fill: #f7faf9; }
+      .title { font: 700 34px Arial, sans-serif; fill: #142126; }
+      .subtitle { font: 400 18px Arial, sans-serif; fill: #52646f; }
+      .section { font: 700 20px Arial, sans-serif; fill: #1a2b32; }
+      .label { font: 700 17px Arial, sans-serif; fill: #18272d; }
+      .small { font: 400 15px Arial, sans-serif; fill: #31444c; }
+      .tiny { font: 400 13px Arial, sans-serif; fill: #42545c; }
+      .pin { font: 700 14px Arial, sans-serif; fill: #17242a; }
+      .box { fill: #ffffff; stroke: #233842; stroke-width: 2.5; rx: 8; }
+      .sensor { fill: #edf7f4; stroke: #0b7667; stroke-width: 2.5; rx: 8; }
+      .powerbox { fill: #fff6ed; stroke: #a9521b; stroke-width: 2.5; rx: 8; }
+      .databox { fill: #eef4ff; stroke: #315c9e; stroke-width: 2.5; rx: 8; }
+      .line { fill: none; stroke: #1d2e35; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .return { fill: none; stroke: #505f66; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 10 8; }
+      .signal { fill: none; stroke: #0b7667; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .data { fill: none; stroke: #315c9e; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+      .warn { fill: #b84a2a; font: 700 15px Arial, sans-serif; }
+      .node { fill: #ffffff; stroke: #1d2e35; stroke-width: 3; }
+      .arrow-power { marker-end: url(#arrowPower); }
+      .arrow-signal { marker-end: url(#arrowSignal); }
+      .arrow-data { marker-end: url(#arrowData); }
+    </style>
+    <marker id="arrowPower" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1d2e35"/>
+    </marker>
+    <marker id="arrowSignal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0b7667"/>
+    </marker>
+    <marker id="arrowData" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#315c9e"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="1000"/>
+
+  <text class="title" x="70" y="70">Edge Sentinel Research Edition - Single Line Diagram</text>
+  <text class="subtitle" x="70" y="102">ESP32 solar monitoring prototype with INA219 current/voltage sensing, DHT22 temperature sensing, MQTT logging, and dashboard analytics</text>
+
+  <rect x="54" y="138" width="1488" height="360" fill="#ffffff" stroke="#d8e1e5" stroke-width="2" rx="10"/>
+  <text class="section" x="70" y="174">Power Path - Solar/DC Source, INA219 High-Side Measurement, Load</text>
+
+  <rect class="powerbox" x="90" y="230" width="230" height="130"/>
+  <text class="label" x="130" y="275">Solar Panel</text>
+  <text class="small" x="130" y="303">or DC Source</text>
+  <text class="pin" x="110" y="342">+</text>
+  <text class="pin" x="290" y="342">-</text>
+
+  <circle class="node" cx="380" cy="295" r="8"/>
+  <line class="line" x1="320" y1="295" x2="380" y2="295"/>
+  <text class="tiny" x="340" y="276">positive line</text>
+
+  <rect class="sensor" x="440" y="215" width="270" height="160"/>
+  <text class="label" x="535" y="252">INA219</text>
+  <text class="small" x="486" y="281">Current + Voltage Sensor</text>
+  <text class="pin" x="462" y="332">VIN+</text>
+  <text class="pin" x="648" y="332">VIN-</text>
+  <line class="line" x1="480" y1="295" x2="670" y2="295"/>
+  <rect x="555" y="279" width="40" height="32" fill="#ffffff" stroke="#0b7667" stroke-width="2"/>
+  <text class="tiny" x="547" y="355">internal shunt</text>
+
+  <line class="line arrow-power" x1="380" y1="295" x2="440" y2="295"/>
+
+  <circle class="node" cx="780" cy="295" r="8"/>
+  <line class="line arrow-power" x1="710" y1="295" x2="780" y2="295"/>
+  <text class="tiny" x="733" y="276">measured current</text>
+
+  <rect class="powerbox" x="860" y="230" width="240" height="130"/>
+  <text class="label" x="918" y="276">Load</text>
+  <text class="small" x="895" y="304">resistor / DC fan</text>
+  <text class="small" x="890" y="330">or adjustable load</text>
+  <line class="line arrow-power" x1="780" y1="295" x2="860" y2="295"/>
+
+  <polyline class="return" points="1100,295 1190,295 1190,430 205,430 205,360"/>
+  <text class="tiny" x="650" y="454">negative return path to source -</text>
+
+  <rect x="1215" y="222" width="285" height="170" fill="#fff9f5" stroke="#d8b093" stroke-width="2.5" rx="8"/>
+  <text class="warn" x="1240" y="258">Important</text>
+  <text class="small" x="1240" y="291">INA219 must be in series</text>
+  <text class="small" x="1240" y="317">with the positive supply line.</text>
+  <text class="small" x="1240" y="345">Do not connect VIN+ and VIN-</text>
+  <text class="small" x="1240" y="371">in parallel with the load.</text>
+
+  <rect x="54" y="535" width="1488" height="365" fill="#ffffff" stroke="#d8e1e5" stroke-width="2" rx="10"/>
+  <text class="section" x="70" y="571">Control, Sensor Signal, and Data Path</text>
+
+  <rect class="databox" x="100" y="635" width="300" height="190"/>
+  <text class="label" x="205" y="675">ESP32</text>
+  <text class="small" x="135" y="707">WiFi microcontroller</text>
+  <text class="pin" x="126" y="750">3V3</text>
+  <text class="pin" x="126" y="778">GND</text>
+  <text class="pin" x="126" y="806">GPIO21 SDA</text>
+  <text class="pin" x="275" y="750">GPIO22 SCL</text>
+  <text class="pin" x="275" y="778">GPIO4 DHT</text>
+
+  <rect class="sensor" x="540" y="615" width="260" height="125"/>
+  <text class="label" x="620" y="654">INA219</text>
+  <text class="small" x="575" y="685">I2C sensor interface</text>
+  <text class="pin" x="565" y="718">VCC GND SDA SCL</text>
+
+  <rect class="sensor" x="540" y="785" width="260" height="125"/>
+  <text class="label" x="623" y="824">DHT22</text>
+  <text class="small" x="575" y="855">temperature sensor</text>
+  <text class="pin" x="585" y="888">VCC DATA GND</text>
+
+  <path class="signal arrow-signal" d="M 400 737 C 455 708, 480 690, 540 675"/>
+  <text class="tiny" x="430" y="690">3V3 + GND</text>
+  <path class="signal arrow-signal" d="M 400 793 C 455 752, 480 728, 540 708"/>
+  <text class="tiny" x="430" y="760">SDA GPIO21</text>
+  <path class="signal arrow-signal" d="M 400 815 C 455 785, 485 758, 540 720"/>
+  <text class="tiny" x="430" y="820">SCL GPIO22</text>
+
+  <path class="signal arrow-signal" d="M 400 765 C 462 824, 490 854, 540 852"/>
+  <text class="tiny" x="420" y="866">3V3 + GND</text>
+  <path class="signal arrow-signal" d="M 400 780 C 454 872, 490 892, 540 875"/>
+  <text class="tiny" x="418" y="910">DATA GPIO4</text>
+  <line class="signal" x1="482" y1="875" x2="482" y2="813"/>
+  <polyline class="signal" points="472,813 482,793 492,813"/>
+  <text class="tiny" x="500" y="810">10 kOhm pull-up to 3V3 if bare DHT22</text>
+
+  <rect class="databox" x="930" y="630" width="230" height="130"/>
+  <text class="label" x="974" y="678">MQTT Broker</text>
+  <text class="small" x="970" y="708">topic:</text>
+  <text class="tiny" x="970" y="733">edge-sentinel/telemetry</text>
+
+  <rect class="databox" x="1260" y="610" width="250" height="150"/>
+  <text class="label" x="1303" y="655">Python Backend</text>
+  <text class="small" x="1292" y="688">SQLite logging</text>
+  <text class="small" x="1292" y="716">CSV export</text>
+
+  <rect class="databox" x="1260" y="805" width="250" height="100"/>
+  <text class="label" x="1313" y="846">Dashboard</text>
+  <text class="small" x="1305" y="876">reports + alerts</text>
+
+  <path class="data arrow-data" d="M 400 705 C 610 560, 770 560, 930 675"/>
+  <text class="tiny" x="650" y="594">WiFi MQTT JSON telemetry</text>
+  <line class="data arrow-data" x1="1160" y1="695" x2="1260" y2="685"/>
+  <line class="data arrow-data" x1="1385" y1="760" x2="1385" y2="805"/>
+
+  <rect x="70" y="925" width="1460" height="48" fill="#eef4f1" stroke="#c7d8d2" stroke-width="2" rx="8"/>
+  <text class="small" x="90" y="955">Recommended first bench test: ESP32 + sensors first, then connect a low-voltage DC source and small load through INA219 VIN+ to VIN-. Keep all ESP32 sensor logic at 3.3 V.</text>
+</svg>

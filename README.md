@@ -1,0 +1,120 @@
+# Edge Sentinel Research Edition
+
+**Edge Sentinel Research Edition** is an intelligent renewable-infrastructure monitoring prototype for detecting solar-system anomalies using embedded sensing, local analytics, and TinyML-ready edge inference.
+
+The project is designed as a research-grade portfolio flagship: it combines electrical engineering, renewable-energy monitoring, ESP32 firmware, MQTT communication, local data logging, fault analytics, machine learning, and technical documentation.
+
+## Research Question
+
+Can a low-cost ESP32-based monitoring system using TinyML achieve practical fault detection for distributed solar infrastructure without relying on cloud computation?
+
+## System Goals
+
+- Monitor voltage, current, temperature, and calculated power from a solar-energy test setup.
+- Publish telemetry through MQTT over WiFi.
+- Store structured readings locally for dataset generation.
+- Detect faults using rule-based, statistical, and machine-learning methods.
+- Compare detection approaches using accuracy, precision, recall, F1 score, false positives, and false negatives.
+- Deploy the best feasible model to an ESP32-class edge device.
+- Validate observed behavior against a simplified MATLAB solar-system simulation.
+
+## Architecture
+
+```text
+ESP32 + Sensors
+    |
+    | MQTT telemetry
+    v
+Python backend
+    |
+    | SQLite + CSV export
+    v
+Analytics and ML pipeline
+    |
+    | model conversion
+    v
+TinyML edge inference
+    |
+    v
+Streamlit dashboard and research reports
+```
+
+## Repository Layout
+
+```text
+backend/              MQTT ingestion, SQLite logging, CSV export
+dashboard/            Streamlit real-time monitoring dashboard
+data/raw/             Raw telemetry captures
+data/processed/       Cleaned datasets for analytics and ML
+docs/                 Research documentation and project notes
+firmware/             ESP32 firmware for sensing and MQTT publishing
+matlab_validation/    Solar-system simulation notes and scripts
+ml/                   Classical ML training and evaluation
+tests/                Python tests
+tinyml/               Edge deployment and model-conversion notes
+```
+
+## Current Status
+
+See `PROJECT_STATUS.md` for the current completion state, validation results, and hardware milestones.
+
+## Development Phases
+
+1. **Monitoring System**: read voltage, current, temperature, publish telemetry, display dashboard.
+2. **Data Collection**: store timestamped voltage, current, temperature, and power readings.
+3. **Fault Injection**: capture normal operation, open circuit, partial shading, temperature anomaly, current deviation, and sensor failure.
+4. **Analytics**: compare rule-based and statistical detection.
+5. **Machine Learning**: train Decision Tree, Random Forest, and Isolation Forest models.
+6. **TinyML**: convert and deploy the best model for ESP32 inference.
+7. **MATLAB Validation**: compare hardware observations with simplified simulation results.
+
+## Initial Success Criteria
+
+- Stable monitoring for at least 1 hour.
+- Sensor updates every 2-5 seconds.
+- Minimum dataset of 5,000 records.
+- Target dataset of 10,000+ records.
+- Documented fault scenarios, metrics, and engineering justification.
+
+## Quick Start
+
+Run the complete local research demo pipeline:
+
+```bash
+python scripts/run_demo_pipeline.py
+```
+
+This generates:
+
+- `data/processed/fault_dataset.csv`
+- `reports/edge_sentinel_experiment_report.md`
+- `dashboard/edge_sentinel_dashboard.html`
+- `tinyml/centroid_model.json`
+- `tinyml/edge_sentinel_centroid_model.h`
+
+For the optional MQTT and Streamlit workflow, create a local Python environment and install the requirements.
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python -m backend.logger --demo
+streamlit run dashboard/app.py
+```
+
+## Hardware Setup
+
+See these before connecting the ESP32 test setup:
+
+- `docs/circuit_diagram.md`
+- `docs/hardware_setup.md`
+- `docs/experiment_protocol.md`
+- `docs/learning_research_materials.md`
+
+## Portfolio Positioning
+
+This project should be presented as:
+
+> Edge Sentinel Research Edition: Intelligent Renewable Infrastructure Monitoring using Embedded Systems, TinyML, and Real-Time Fault Detection
+
+It should not be reduced to a generic ESP32 solar-monitoring project. The engineering value is in the complete monitoring, dataset, analytics, edge-AI, and research-validation workflow.
