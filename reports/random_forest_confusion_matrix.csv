@@ -1,0 +1,7 @@
+,current_deviation,normal,open_circuit,partial_shading,sensor_failure,temperature_anomaly
+current_deviation,210,0,0,3,0,1
+normal,0,207,0,0,0,0
+open_circuit,0,0,213,0,1,0
+partial_shading,5,0,1,220,0,0
+sensor_failure,0,16,0,0,209,0
+temperature_anomaly,0,0,0,0,0,264

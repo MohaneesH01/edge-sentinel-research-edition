@@ -1,0 +1,4 @@
+name,accuracy
+decision_tree,0.977037037037037
+random_forest,0.98
+isolation_forest,0.9162962962962963

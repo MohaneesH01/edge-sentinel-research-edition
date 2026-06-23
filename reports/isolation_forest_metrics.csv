@@ -1,0 +1,4 @@
+label,precision,recall,f1,support
+anomaly,0.9877,0.9125,0.9486,1143
+normal,0.6599,0.9372,0.7745,207
+accuracy,,,0.9163,1350
