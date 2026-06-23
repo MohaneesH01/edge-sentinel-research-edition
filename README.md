@@ -4,9 +4,11 @@
 
 The project is designed as a research-grade portfolio flagship: it combines electrical engineering, renewable-energy monitoring, ESP32 firmware, MQTT communication, local data logging, fault analytics, machine learning, and technical documentation.
 
-## Research Question
+## Research Question (v2)
 
-Can a low-cost ESP32-based monitoring system using TinyML achieve practical fault detection for distributed solar infrastructure without relying on cloud computation?
+> Can a sub-$50-volume BOM ESP32-class edge node, deployed at the panel level, run a quantized TFLite-Micro (int8) on-device classifier that detects and classifies the six fault modes — normal, open-circuit, partial shading, temperature anomaly, current deviation, sensor failure — of distributed rooftop PV under real-world conditions of irradiance variability, temperature drift, and sensor aging, achieving F1 ≥ 0.85 per class on a held-out test set of ≥ 1,500 labelled real-world samples with temperature-scaled calibrated confidence, while remaining energy-autonomous, fully offline, and demonstrably reproducible across panel brands and climates, and producing audit-grade explanations for every classification decision?
+
+See [`docs/research_question.md`](docs/research_question.md) for the four sub-hypotheses and [`docs/threats_to_validity.md`](docs/threats_to_validity.md) for known limitations.
 
 ## System Goals
 
@@ -54,9 +56,17 @@ tests/                Python tests
 tinyml/               Edge deployment and model-conversion notes
 ```
 
-## Current Status
+## Current Status (synthetic-data baseline)
 
-See `PROJECT_STATUS.md` for the current completion state, validation results, and hardware milestones.
+| Method | Accuracy |
+| --- | ---: |
+| Rule-based detection | 0.9133 |
+| Centroid (edge-feasible) | 0.8096 |
+| Decision Tree | 0.9770 |
+| Random Forest | 0.9800 |
+| Isolation Forest (normal vs anomaly) | 0.9163 |
+
+All five confusion matrices and the per-method bar chart are auto-rendered into `reports/figures/`. See [`reports/edge_sentinel_experiment_report.md`](reports/edge_sentinel_experiment_report.md) for the full report and [`PROJECT_STATUS.md`](PROJECT_STATUS.md) for the hardware-validated milestones.
 
 ## Development Phases
 
